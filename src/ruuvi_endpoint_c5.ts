@@ -32,7 +32,7 @@ const addressEnd = addressStart + 6;
 const addressInvalid = 0xffffffffffff;
 
 export const dfc5parser = (data: Uint8Array): RuuviTagBroadcast => {
-  if (data.length < addressEnd - 1 || 0xC5 !== data[0]) {
+  if (data.length < addressEnd - 1 || 0xc5 !== data[0]) {
     throw new Error('Not DFC5 data');
   }
   const robject: RuuviTagBroadcast = new RuuviTagBroadcast();
