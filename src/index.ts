@@ -8,6 +8,7 @@ import { dffeparser } from './ojousima_endpoint_fe';
 import { dfxxparser } from './ojousima_endpoint_xx';
 import { df3parser } from './ruuvi_endpoint_3';
 import { df5parser } from './ruuvi_endpoint_5';
+import { dfc5parser } from './ruuvi_endpoint_c5';
 import { RuuviTagBroadcast } from './ruuvitagbroadcast';
 
 export * from './accelerationbroadcast';
@@ -22,6 +23,7 @@ export * from './ojousima_endpoint_xx';
 export * from './ruuvitagbroadcast';
 export * from './ruuvi_endpoint_3';
 export * from './ruuvi_endpoint_5';
+export * from './ruuvi_endpoint_c5';
 
 /**
  * Return correct parser for given data
@@ -44,6 +46,8 @@ export function getParser(data: Uint8Array): manufacturerDataParser {
     parser = dfacparser;
   } else if (0xaf === data[0]) {
     parser = dfafparser;
+  } else if (0xc5 === data[0]) {
+    parser = dfc5parser;
   } else if (0xfe === data[0]) {
     parser = dffeparser;
   } else {
